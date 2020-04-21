@@ -19,7 +19,7 @@ export default {
         message: String,
         name: String
     },
-    watch: {
+    watch: { //if message changes, display for user
         message(){
             this.seeMessage = true
             setTimeout( () => {

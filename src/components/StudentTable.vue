@@ -14,7 +14,7 @@
                         <th>Name</th>
                         <th>StarID</th>
                         <th>Present?</th>
-                        <th v-show = "editTable">Delete</th>
+                        <th v-show = "editTable">Delete</th> <!--if user checks edit, display delete column-->
                     </tr>
 
                     <StudentRow 
@@ -22,7 +22,7 @@
                         v-bind:student="student"
                         v-bind:edit = "editTable"
                         v-on:student-present = "studentArrivedOrLeft"
-                        v-on:delete-student = "studentDeleted">
+                        v-on:delete-student = "studentDeleted"> <!--v:on = respond to child events-->
                     </StudentRow>
 
                 </table>
@@ -38,7 +38,7 @@ export default {
     components: { StudentRow },
     data(){
         return{
-            editTable: false
+            editTable: false //display delete column? y or n
         }
     },
     props: {
@@ -46,10 +46,10 @@ export default {
     },
     methods: {
         studentArrivedOrLeft(student){
-            this.$emit('student-present', student)
+            this.$emit('student-present', student) //send data from child to parent
         },
         studentDeleted(student){
-            this.$emit('delete-student', student)
+            this.$emit('delete-student', student) //send data from child to parent
         }
     }
 }
